@@ -1,2 +1,2 @@
 # iDRAC_GUI
-This is a simple graphical interface for iDRAC/IPMI
+A simple graphical interface for iDRAC/IPMI tool
