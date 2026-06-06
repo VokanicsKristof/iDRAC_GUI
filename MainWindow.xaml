@@ -33,7 +33,6 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-<<<<<<< HEAD
                     <TextBlock Text="iDRAC Monitor" VerticalAlignment="Center" Margin="10,0" Foreground="White" FontWeight="Bold" />
 
                     <Button Grid.Column="1" Width="40" Content="🗕" Click="Btn_Minimized" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
@@ -41,7 +40,7 @@
                     <Button Grid.Column="2" Width="40" Content="🗖" Click="Btn_Fullscreen" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
 
                     <Button Grid.Column="3" Width="40" Content="✕" Background="#C42B1C" Click="Btn_Close" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
-=======
+
                     <TextBlock Text="iDRAC Monitor" VerticalAlignment="Center" Margin="10,0" Foreground="White" FontWeight="Bold"/>
 
                     <Button Grid.Column="1" Width="40" Content="🗕" Click="Btn_Minimized" shell:WindowChrome.IsHitTestVisibleInChrome="True" />
@@ -49,7 +48,6 @@
                     <Button Grid.Column="2" Width="40" Content="🗖" Click="Btn_Fullscreen" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
 
                     <Button Grid.Column="3" Width="40" Content="✕" Background="#C42B1C" Click="Btn_Close" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
->>>>>>> 28402df818ef675968852e24c439c9b80ff628ac
                 </Grid>
             </Border>
         </Grid>
