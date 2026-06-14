@@ -69,6 +69,28 @@ namespace IDRAC_IPMI
             }
         }
 
+        private string _CPU1Text = "";
+        public string CPU1Text
+        {
+            get => _CPU1Text;
+            set
+            {
+                _CPU1Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _CPU2Text = "";
+        public string CPU2Text
+        {
+            get => _CPU2Text;
+            set
+            {
+                _CPU2Text = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Brush _HealthColor;
         public Brush HealthColor 
         {

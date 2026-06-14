@@ -26,7 +26,7 @@ namespace IDRAC_IPMI
                // VentillationInfo.Visibility = Visibility.Collapsed;
             //};
 
-    DataContext = SensorView;
+            DataContext = SensorView;
 
             SensorView.Fans = new System.Collections.ObjectModel.ObservableCollection<DTOs.FanInfo>();
         }
@@ -35,6 +35,7 @@ namespace IDRAC_IPMI
         {
             await sensorActions.LoadSensors(SensorGrid, IpValue.Text, Username.Text, Password.Text, LoadingOverlay, UpdateVis, SensorView.Fans);
             VentillationInfo.Visibility = Visibility.Collapsed;
+            FanData.Visibility = Visibility.Visible;
         }
 
         private async void UpdateFanMode(object sender, SelectionChangedEventArgs e)
@@ -84,7 +85,7 @@ namespace IDRAC_IPMI
             }
             catch (TaskCanceledException)
             {
-                // user moved slider again
+                // user moved slider again within delay time
             }
         }
 

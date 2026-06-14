@@ -31,6 +31,8 @@ namespace IDRAC_IPMI.Actions
             var power = sensors
                 .FirstOrDefault(x => x.SensorName == "Pwr Consumption");
 
+            var CPUs = sensors.FindAll(x => x.SensorName == "Temp");
+
             if (inlet != null)
                 _vm.InletTempText = $"{inlet.SensorValue} °C";
 
@@ -39,6 +41,11 @@ namespace IDRAC_IPMI.Actions
 
             if (power != null)
                 _vm.PowerText = $"{power.SensorValue} W";
+
+            _vm.CPU1Text = $"{CPUs[0].SensorValue} °C";
+            
+            if (CPUs.Count == 2)
+                _vm.CPU2Text = $"{CPUs[1].SensorValue} °C";
 
             _vm.LastUpdated = "Trigger";
 
