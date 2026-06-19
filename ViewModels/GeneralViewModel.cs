@@ -3,9 +3,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 namespace IDRAC_IPMI
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class GeneralViewModel : INotifyPropertyChanged
     {
         private string _LastUpdated = "Last updated: ";
         public string LastUpdated
@@ -104,6 +106,7 @@ namespace IDRAC_IPMI
 
         public ObservableCollection<SensorInfo> Sensors { get; }
         public ObservableCollection<FanInfo> Fans { get; set; }
+        public Credentials Credentials { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
