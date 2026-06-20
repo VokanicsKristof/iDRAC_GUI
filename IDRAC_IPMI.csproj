@@ -18,4 +18,8 @@
     <EmbeddedResource Include="Resources\server_fan.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Media\" />
+  </ItemGroup>
+
 </Project>
