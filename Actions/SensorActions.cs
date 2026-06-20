@@ -42,7 +42,7 @@ namespace IDRAC_IPMI.Actions
 
         public async Task<string> GetSensorsAsync()
         {
-            var args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} sensor";
+            var args = ArgGenerator("sensor");
 
             if (!ipmiExist())
             {
@@ -75,7 +75,7 @@ namespace IDRAC_IPMI.Actions
 
         public async Task<string> GetChassisPowerStateAsync()
         {
-            var args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} chassis power status";
+            var args = ArgGenerator("chassis power status");
 
             if (!ipmiExist())
             {
@@ -113,10 +113,10 @@ namespace IDRAC_IPMI.Actions
             switch (fanMode)
             {
                 case FanModesEnum.Automatic:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} raw 0x30 0x30 0x01 0x01";
+                    args = ArgGenerator("raw 0x30 0x30 0x01 0x01");
                     break;
                 case FanModesEnum.Manual:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} raw 0x30 0x30 0x01 0x00";
+                    args = ArgGenerator("raw 0x30 0x30 0x01 0x00");
                     break;
             }
 
@@ -149,7 +149,7 @@ namespace IDRAC_IPMI.Actions
 
         public async Task<string> UpdateFanSpeedAsync(int amount)
         {
-            var args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} raw 0x30 0x30 0x02 0xff 0x{amount.ToString("X")}";
+            var args = ArgGenerator($"raw 0x30 0x30 0x02 0xff 0x{amount.ToString("X")}");
 
             if (!ipmiExist())
             {
@@ -189,8 +189,8 @@ namespace IDRAC_IPMI.Actions
             }
 
             List<PowerInfo> powerInfo = new List<PowerInfo>();
-            
-            var args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} delloem powermonitor";
+
+            var args = ArgGenerator("delloem powermonitor");
 
             var psi = new ProcessStartInfo
             {
@@ -233,16 +233,16 @@ namespace IDRAC_IPMI.Actions
             switch (powerOption)
             {
                 case PowerOptionEnum.PowerOn:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} chassis power on";
+                    args = ArgGenerator("chassis power on");
                     break;
                 case PowerOptionEnum.GracefulShutdown:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} chassis power soft";
+                    args = ArgGenerator("chassis power soft");
                     break;
                 case PowerOptionEnum.ForceOff:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} chassis power off";
+                    args = ArgGenerator("chassis power off");
                     break;
                 case PowerOptionEnum.Reboot:
-                    args = $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} chassis power cycle";
+                    args = ArgGenerator("chassis power cycle");
                     break;
             }
 
@@ -295,6 +295,11 @@ namespace IDRAC_IPMI.Actions
         public bool ipmiExist()
         {
             return File.Exists(IPMI_Path);
+        }
+
+        private string ArgGenerator(string command)
+        {
+            return $"-C 17 -H {_credentials.Ip} -I lanplus -U {_credentials.Username} -P {_credentials.Password} {command}";
         }
     }
 }

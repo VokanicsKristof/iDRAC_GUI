@@ -25,7 +25,7 @@ namespace IDRAC_IPMI
 
             UpdateVis = new UpdateVisuals(SensorView.GeneralViewModel);
 
-            // Warning! Before you uncomment this, make sure that the ip, username and password textbox all have the correct default value
+            // Warning! Before you uncomment this, make sure that the ip, username and password viewmodel property all have the correct default value
             //Loaded += async (_, _) =>
             //{
                // await sensorActions.LoadSensors(SensorGrid, LoadingOverlay, UpdateVis, SensorView.Fans);
