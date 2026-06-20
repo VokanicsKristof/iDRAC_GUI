@@ -11,9 +11,9 @@ namespace IDRAC_IPMI.Actions
 {
     public class UpdateVisuals
     {
-        private readonly ViewModel _vm;
+        private readonly GeneralViewModel _vm;
 
-        public UpdateVisuals(ViewModel vm)
+        public UpdateVisuals(GeneralViewModel vm)
         {
             _vm = vm;
         }
